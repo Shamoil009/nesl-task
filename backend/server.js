@@ -35,7 +35,8 @@ io.on("connection", (socket) => {
   console.log(socket.id);
 
   socket.on("send-data", (data) => {
-    socket.broadcast.emit("receive-data", data);
+   // io.emit("receive-data", data); // send data to everyone including sender
+    socket.broadcast.emit("receive-data", data);  // send data to everyone except sender
     console.log(data);
   });
 });
